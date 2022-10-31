@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>入校登记</title>
+<script src="fakeme.umd.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css" >
+<style>
+	.content{
+			width:90%;
+		}
+	.jobnum{
+		     font-size: 3rem;
+		     
+		 }
+</style>
+</head>
+<body style="background-image:url(bg16.jpg);">
+<div class="container-fluid content">
+	<br><br>
+	<div class="alert alert-success">
+		<strong style="font-size: 2rem;">已成功登记入校</strong>
+	</div>
+	<div id="time"  style="background:#FFF;width:100%;text-align:center;font-size:32px;font-weight:bold;"></div>
+	<br>
+	<ul class="list-group">
+		<li class="list-group-item" style="font-weight: bold;font-size: 2rem;color:#C71585;">学生信息：</li>
+		<li id="code_txt" class="list-group-item">&nbsp;学号：200203020126</li>
+		<li id="name_txt" class="list-group-item">&nbsp;姓名：张颖聪</li>
+		<li class="list-group-item">&nbsp;班级：20电子信息1班</li>
+	</ul>
+</div>
+	<script type="text/javascript">
+		function settime(){
+		              var date = new Date();//获得当前时间
+		              var yy = date.getFullYear();//年份
+		              var mm = date.getMonth() + 1;//获得月份
+		              mm = (mm < 10 ? "0" + mm : mm);//月份小于10时，前面加个0(例如9 ->09)天，小时，分钟，秒同理
+		              var dd = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());//天
+		              var hours = (date.getHours() < 10 ? "0" + date.getHours() : date.getHours());//小时
+		              var minutes = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());//分钟
+		              var seconds = (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds());//秒
+		              document.getElementById("time").innerHTML = yy + '-' + mm + "-" + dd + " " + hours + ':' + minutes + ':' + seconds;
+		          }
+		          
+    settime();
+    setInterval("settime()", 1000);
+	</script>
+
+	<script type="text/javascript">
+        let code = function () {
+            let num = parseInt(Math.random()*40+1);
+            if (num < 10) {
+              return '0' + num;
+            } else {
+              return num;
+            }
+          }
+        let name = function(){
+            let fm = new FakeMe({ sex: "male" });
+            let name = fm.name()[0];
+            while (true) {
+              if (name.length != 3) {
+                name = fm.name()[0];
+              } else {
+                return name;
+                break;
+              }
+            }
+        }
+    </script>
+</body>
+</html>
